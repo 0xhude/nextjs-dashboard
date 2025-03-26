@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "preinstall": "npx pnpm config set auto-install-peers true && npx pnpm config set enable-pre-post-scripts true",
     "build": "next build",
     "dev": "next dev --turbopack",
     "start": "next start"
