@@ -42,9 +42,8 @@ export const { auth, signIn, signOut } = NextAuth({
             },
           }),
         ],
-            // 明示的なページの設定を追加
-        pages: {
-            signIn: '/login',
-            error: '/login', // エラー時のリダイレクト先
-        },
+        // 明示的にバージョン5向けの設定を追加
+        basePath: "/api/auth",
+        session: { strategy: "jwt" }, 
+        debug: process.env.NODE_ENV === "development",
       });

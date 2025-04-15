@@ -3,6 +3,7 @@ import type { NextAuthConfig } from 'next-auth';
 export const authConfig = {
   pages: {
     signIn: '/login',
+    error: '/login',  // エラーページを追加
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
@@ -16,6 +17,20 @@ export const authConfig = {
       }
       return true;
     },
+    jwt({ token, user }) {
+      // 初回サインイン時にユーザーデータをトークンにコピー
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      // セッションにユーザーIDを追加
+      if (token && session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    }
   },
   providers: [], // Add providers with an empty array for now
 } satisfies NextAuthConfig;
