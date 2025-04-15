@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 export default async function Page() {
   // const latestInvoices = await fetchLatestInvoices();
   const {
-    numberOfInvoices,
-    numberOfCustomers,
-    totalPaidInvoices,
-    totalPendingInvoices,
+    numberOfInvoices: _numberOfInvoices,
+    numberOfCustomers: _numberOfCustomers,
+    totalPaidInvoices: _totalPaidInvoices,
+    totalPendingInvoices: _totalPendingInvoices,
   } = await fetchCardData();
   return (
     <main>
