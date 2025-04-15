@@ -42,4 +42,9 @@ export const { auth, signIn, signOut } = NextAuth({
             },
           }),
         ],
+            // 明示的なページの設定を追加
+        pages: {
+            signIn: '/login',
+            error: '/login', // エラー時のリダイレクト先
+        },
       });
